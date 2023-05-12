@@ -18,8 +18,12 @@ public class Libro extends Elemento {
 	}
 	
 	public static String toString(Libro libro) {
-		return "Libro: " + "#" + libro.codiceISBN + "#" + libro.titolo + "#" + libro.annoPubblicazione
-				+ "#" + libro.numeroPagine + "#" + libro.autore + "#" + libro.genere;
+		String s = System.lineSeparator();
+		return "#" + libro.codiceISBN + s + 
+				"#" + libro.titolo + s + 
+				"#" + libro.annoPubblicazione + s +
+				"#" + libro.numeroPagine + s +
+				"#" + libro.autore + s +
+				"#" + libro.genere + s;
 	}
-
 }

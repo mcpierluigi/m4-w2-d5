@@ -9,8 +9,11 @@ public class Rivista extends Elemento {
 	}
 	
 	public static String toString(Rivista rivista) {
-		return "Rivista"  + "#" + rivista.codiceISBN + "#" + rivista.titolo + "#" + rivista.annoPubblicazione
-				+ "#" + rivista.numeroPagine + "#" + rivista.periodicità;
+		String s = System.lineSeparator();
+		return "#" + rivista.codiceISBN + s +
+				"#" + rivista.titolo + s +
+				"#" + rivista.annoPubblicazione + s +
+				"#" + rivista.numeroPagine + s +
+				"#" + rivista.periodicità + s;
 	}
-	
 }

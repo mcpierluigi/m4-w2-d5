@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,8 +43,15 @@ public class Archivio {
 		logger.info("Dati salvati correttamente sul file");
 	}
 	
-	public void readArchivio() throws IOException {
-
+	public static String readFileFromDisk() throws IOException {
+		File file = new File("archivio.txt");
+		if (file.exists()) {
+			String content = FileUtils.readFileToString(file, "UTF-8");
+			return content;
+		} else {
+			logger.info("File non trovato!");
+			return "";
+		}
 	}
 	
 	//Main
@@ -85,6 +92,14 @@ public class Archivio {
 			mainArchivio.saveArchivio();
 		} catch (IOException e) {
 			logger.error("Errore durante la lettura/scrittura",e);
+		}
+		
+		try {
+			logger.info(System.lineSeparator());
+			logger.info(System.lineSeparator() + "ECCO IL CONTENUTO DEL FILE:");
+			logger.info(System.lineSeparator() +  readFileFromDisk());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
