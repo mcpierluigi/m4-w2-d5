@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.HashMap;
 import java.util.List;
 
@@ -74,8 +75,8 @@ public class Archivio {
 		Elemento ricercaPerISBN = mainArchivio.ricercaPerISBN("12345");
 		System.out.println(ricercaPerISBN.getTitolo());
 		
-		List<Elemento> ricercaPerAnno = mainArchivio.ricercaPerAnno(2012);
-		ricercaPerAnno.forEach(e -> System.out.print(e.getTitolo()));
+		List<Elemento> ricercaPerAnno = mainArchivio.ricercaPerAnno(1997);
+		ricercaPerAnno.forEach(e -> System.out.println(e.getTitolo()));
 		
 		List<Libro> ricercaPerAutore = mainArchivio.ricercaPerAutore("Tolkien");
 		ricercaPerAutore.forEach(e -> System.out.println("Titolo: " + e.getTitolo()));
@@ -101,8 +102,9 @@ public class Archivio {
 		return archivio.get(codice);
 	}
 	
+	//Da capire perchè con (e -> e.getAnnoPubblicazion() == anno) non funziona :(
 	public List<Elemento> ricercaPerAnno(Integer anno) {
-		return archivio.values().stream().filter(e -> e.getAnnoPubblicazione() == anno).toList();
+		return archivio.values().stream().filter(e -> anno.equals(e.getAnnoPubblicazione())).toList();
 	}
 	
 	public List<Libro> ricercaPerAutore(String autore) {
